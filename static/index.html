@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f6fa">
+    <meta name="description" content="TaskFlow AI voice sales assistant dashboard">
+    <title>TaskFlow Voice — AI Sales Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/script.js?v=20261022-workspace-invites-1" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <main class="main-content" id="dashboard">
+        <header class="topbar">
+          <a class="brand" href="/" aria-label="TaskFlow home">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 36 36"><path d="M9 18.5 15 24l12-13" /><path d="M18 3.5a14.5 14.5 0 1 0 14.5 14.5" /></svg>
+            </span>
+            <span class="brand-name">TaskFlow<span>.</span></span>
+            <span class="brand-divider"></span>
+            <span class="brand-product">Voice studio</span>
+          </a>
+          <nav class="top-nav" aria-label="Main navigation">
+            <a class="top-nav-link active" href="dashboard">Dashboard</a>
+            <a class="top-nav-link" href="recent-calls">Call history <span id="history-count">0</span></a>
+          </nav>
+          <div class="topbar-right">
+            <span class="today-label" id="today-label"></span>
+            <span class="avatar-small">S</span>
+          </div>
+        </header>
+
+        <section class="page-heading">
+          <div class="hero-copy">
+            <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR AI SALES ASSISTANT</div>
+            <h1>Let’s make this<br class="mobile-break"> a great conversation.</h1>
+            <p class="page-description">Real-time voice conversations. Clear answers. A smarter next step.</p>
+            <div class="hero-features">
+              <span><i>01</i> Talk naturally</span>
+              <span><i>02</i> Get real-time answers</span>
+              <span><i>03</i> Know what to do next</span>
+            </div>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="hero-orbit orbit-outer"></div>
+            <div class="hero-orbit orbit-inner"></div>
+            <div class="hero-core"><span class="hero-core-ring"></span><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3m-4 0h8"/></svg></div>
+            <div class="hero-wave">
+              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+            <div class="hero-wave-label">VOICE INTELLIGENCE <span>●</span></div>
+          </div>
+        </section>
+
+        <section class="call-grid" aria-label="Live call and call analysis">
+          <article class="panel conversation-panel" id="live-conversation">
+            <div class="panel-heading">
+              <div class="panel-title">
+                <div class="title-icon mic-title-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3m-4 0h8"/></svg>
+                </div>
+                <div><h2>Live conversation</h2><p>Your AI-powered sales call</p></div>
+              </div>
+              <span class="call-state" id="call-state"><i></i><span>Ready</span></span>
+            </div>
+
+            <div class="call-toolbar">
+              <div class="duration-block">
+                <span class="toolbar-label">CALL DURATION</span>
+                <strong id="call-duration">00:00</strong>
+              </div>
+              <label class="language-picker" for="language-select">
+                <span class="toolbar-label">LANGUAGE</span>
+                <select id="language-select" aria-label="Conversation language">
+                  <option value="en-US">English</option>
+                  <option value="hi-IN">हिन्दी</option>
+                  <option value="te-IN">తెలుగు</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="transcript" id="transcript" aria-live="polite" aria-relevant="additions text">
+              <div class="empty-conversation" id="empty-conversation">
+                <div class="studio-mic" aria-hidden="true">
+                  <span class="mic-halo halo-a"></span><span class="mic-halo halo-b"></span>
+                  <span class="mic-device"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3m-4 0h8"/></svg></span>
+                </div>
+                <div class="ready-caption"><span class="ready-indicator"></span> YOUR STUDIO IS READY</div>
+                <strong>Start with a real conversation.</strong>
+                <p>Hi! I’m TaskFlow’s AI assistant. TaskFlow helps teams organize projects, assign tasks, collaborate, and track deadlines.</p>
+                <div class="voice-waveform" aria-hidden="true">
+                  <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                </div>
+              </div>
+            </div>
+            <div class="live-indicator hidden" id="live-indicator"><span></span><span></span><span></span><em>Listening to customer</em></div>
+
+            <div class="consent-row" id="consent-row">
+              <label class="consent-label"><input type="checkbox" id="recording-consent"><span class="custom-check"></span><span>I have permission to record and process this call.</span></label>
+              <span class="secure-label"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="4" y="8" width="12" height="9" rx="2"/><path d="M7 8V6a3 3 0 0 1 6 0v2"/></svg>Consent required</span>
+            </div>
+            <div class="call-actions">
+              <button class="button button-start" id="start-call" type="button" disabled>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7L8 5Z"/></svg>
+                <span>Start call</span>
+              </button>
+              <button class="button button-end hidden" id="end-call" type="button" disabled>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
+                <span>End call</span>
+              </button>
+              <span class="action-hint" id="action-hint">Recording starts after you give consent.</span>
+            </div>
+            <form class="text-fallback hidden" id="text-fallback">
+              <label for="customer-message">Type a customer response</label>
+              <div class="text-entry">
+                <input id="customer-message" type="text" maxlength="2000" placeholder="Ask TaskFlow a question..." autocomplete="off">
+                <button type="submit" aria-label="Send response"><svg viewBox="0 0 24 24"><path d="m5 12 14-7-5 14-2-6-7-1Z"/><path d="m12 13 7-8"/></svg></button>
+              </div>
+            </form>
+            <div class="voice-retry hidden" id="voice-retry">
+              <button class="text-button" id="retry-voice" type="button">Retry voice</button>
+              <span id="voice-error">Speech recognition is unavailable. Type your response instead.</span>
+            </div>
+          </article>
+
+          <article class="panel analysis-panel" id="call-analysis">
+            <div class="panel-heading">
+              <div class="panel-title">
+                <div class="title-icon analysis-title-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.64 5.64l2.12 2.12m8.48 8.48 2.12 2.12m0-12.72-2.12 2.12m-8.48 8.48-2.12 2.12"/><circle cx="12" cy="12" r="5"/></svg>
+                </div>
+                <div><h2>Post-call intelligence</h2><p>Insights, automatically captured</p></div>
+              </div>
+              <span class="ai-badge">AI POWERED</span>
+            </div>
+            <div class="analysis-body" id="analysis-body">
+              <div class="analysis-placeholder">
+                <div class="placeholder-art" aria-hidden="true">
+                  <span class="placeholder-star star-one">✦</span><span class="placeholder-star star-two">✧</span>
+                  <div class="placeholder-sheet"><i></i><i></i><i></i><b>✓</b></div>
+                </div>
+                <div class="ready-caption"><span class="ready-indicator mint"></span> THE DETAILS, TAKEN CARE OF</div>
+                <strong>From conversation<br>to confident next step.</strong>
+                <p>Finish the call for a clear summary, customer needs, objections, and a recommended follow-up.</p>
+                <div class="insight-preview" aria-hidden="true"><span>SUMMARY</span><span>NEEDS</span><span>NEXT STEP</span></div>
+              </div>
+            </div>
+            <div class="analysis-footer"><span class="footer-spark">✦</span><span>Grounded in your conversation, not guesswork.</span></div>
+          </article>
+        </section>
+
+        <section class="history-section" id="recent-calls">
+          <div class="section-heading">
+            <div><div class="eyebrow history-eyebrow">YOUR ACTIVITY</div><h2>Recent calls <span id="recent-count">0</span></h2></div>
+            <div class="history-actions">
+              <button class="text-button danger-button" id="delete-all-calls" type="button" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2m3 0-.8 14H5.8L5 6m4 4v6m6-6v6"/></svg>Delete all</button>
+              <button class="text-button" id="refresh-history" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6 9a7 7 0 0 1 12-2l2 5M4 12l2 5a7 7 0 0 0 12-2"/></svg>Refresh</button>
+            </div>
+          </div>
+          <div class="history-list" id="history-list">
+            <div class="history-empty"><span class="history-empty-icon">◷</span><strong>No calls yet</strong><span>Your call recordings and summaries will appear here.</span></div>
+          </div>
+        </section>
+
+        <footer class="page-footer"><span>TaskFlow AI Sales Studio</span><span>Built for better conversations <b>✦</b></span></footer>
+      </main>
+    </div>
+
+    <div class="toast-region" id="toast-region" aria-live="assertive"></div>
+  </body>
+</html>
